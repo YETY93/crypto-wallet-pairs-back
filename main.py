@@ -1,13 +1,14 @@
 from src.entidades.usuario_model import User_Model
 from src.negocio.usuario import usuario
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, APIRouter, HTTPException
 
 app = FastAPI()
+base_path = APIRouter(prefix="/cripto-wallet-pairs/api/v1")
 
 
 from fastapi import HTTPException
 
-@app.post("/")
+@base_path.post("/usuario/crear")
 async def root(usuario_model: User_Model):
     try:
         if usuario.crear_usuario(usuario_model):
@@ -19,7 +20,14 @@ async def root(usuario_model: User_Model):
     except Exception as e:  # Manejar excepciones no esperadas
         raise HTTPException(status_code=500, detail=f"Error interno del servidor: {str(e)}")
 
+@base_path.post("/usuario/obtener")
+async def root(usuario_model: User_Model):
+    return usuario.buscar_usuario(usuario_model)
 
-@app.get("/hello/{name}")
+@base_path.get("/hello/{name}")
 async def say_hello(name: str):
     return {"message": f"Hello {name}"}
+
+
+# Registramos el APIRouter en la aplicación principal
+app.include_router(base_path)

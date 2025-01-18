@@ -74,7 +74,8 @@ docs/_build/
 # PyBuilder
 .pybuilder/
 target/
-
+# Ignorar todos los archivos __init__.py
+**/__init__.py
 # Jupyter Notebook
 .ipynb_checkpoints
 

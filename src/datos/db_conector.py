@@ -14,7 +14,7 @@ cnx = mysql.connector.connect(
 
 
 
-def ejecutar_sentencia(query: str, valores: tuple)-> bool:
+def insertar_datos(query: str, valores: tuple)-> bool:
     try:
         cursor = cnx.cursor()
         cursor.execute(query, valores)
@@ -27,3 +27,15 @@ def ejecutar_sentencia(query: str, valores: tuple)-> bool:
         cnx.rollback()  # Deshacer cambios en caso de error
         print(f"Error al ejecutar la consulta. Se realizó un rollback: {err}")
         return False
+
+
+def obtener_dato_unico(query: str, valores: tuple) -> tuple | None:
+    try:
+        cursor = cnx.cursor()
+        cursor.execute(query, valores)
+        resultado = cursor.fetchone()
+        cursor.close()
+        return resultado
+    except mysql.connector.Error as err:
+        print(f"Error al ejecutar la consulta: {err}")
+        return None
