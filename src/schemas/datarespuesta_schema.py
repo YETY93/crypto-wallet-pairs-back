@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import Any, List, Optional, Dict
 
-from src.entidades.error_eschema import ErrorModel
+from src.schemas.error_eschema import ErrorModel
 
 
 class DataRespuestaModel(BaseModel):

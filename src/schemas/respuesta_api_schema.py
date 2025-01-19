@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from src.entidades.datarespuesta_schema import DataRespuestaModel
+from src.schemas.datarespuesta_schema import DataRespuestaModel
 
 
 class ApiRespuestaModel(BaseModel):

@@ -1,6 +1,6 @@
-from src.entidades.datarespuesta_schema import DataRespuestaModel
-from src.entidades.respuesta_api_codigo_schema import ApiRespuestaCodigoModel
-from src.entidades.respuesta_api_schema import ApiRespuestaModel
+from src.schemas.datarespuesta_schema import DataRespuestaModel
+from src.schemas.respuesta_api_codigo_schema import ApiRespuestaCodigoModel
+from src.schemas.respuesta_api_schema import ApiRespuestaModel
 
 from typing import Any
 

@@ -1,6 +1,6 @@
 from src.datos.db_conector import insertar_datos, obtener_dato_unico
 
-from src.entidades.usuario_schema import UserModel
+from src.schemas.usuario_schema import UserModel
 
 
 def persistir_usuario(usuario: UserModel) -> bool:
@@ -9,9 +9,9 @@ def persistir_usuario(usuario: UserModel) -> bool:
     return insertar_datos(query, valores)
 
 def obtener_usuario(alias_usuario: str) -> UserModel | None:
-    query: str = "SELECT u.user_name, u.user_password FROM crypto_wallet.users u WHERE u.user_name = %s"
+    query: str = "SELECT u. u.user_name, u.user_password FROM crypto_wallet.users u WHERE u.user_name = %s"
     valor: tuple = (alias_usuario,)
     valor_obtenido: tuple = obtener_dato_unico(query, valor)
     if valor_obtenido:
-        return UserModel(nombre_usuario=valor_obtenido[0], password=valor_obtenido[1])
+        return UserModel(id=valor_obtenido[0], nombre_usuario=valor_obtenido[1], password=valor_obtenido[2])
     return None

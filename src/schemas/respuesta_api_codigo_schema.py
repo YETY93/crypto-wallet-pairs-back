@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from src.entidades.respuesta_api_schema import ApiRespuestaModel
+from src.schemas.respuesta_api_schema import ApiRespuestaModel
 
 
 class ApiRespuestaCodigoModel(BaseModel):
