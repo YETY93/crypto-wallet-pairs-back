@@ -1,8 +1,8 @@
-from src.entidades.usuario_model import User_Model
+from src.entidades.usuario_schema import UserModel
 from src.negocio.utilidades.seguridad.password import verify_password
 
 
-def validar_usuario(usuario_obtenido: User_Model, usuario_enviado: User_Model):
+def validar_usuario(usuario_obtenido: UserModel, usuario_enviado: UserModel):
     if usuario_obtenido is None:
         # aaca uan excepcion que diga  usuario y contrasena invalido
         raise Exception("El usuario no se encuentra")

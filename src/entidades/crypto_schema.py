@@ -2,7 +2,7 @@ from datetime import datetime, date
 
 from pydantic import BaseModel
 
-class Crypto_Model(BaseModel):
+class CryptoModel(BaseModel):
     created_at: datetime
     deleted_at: datetime
     id_usuario: int

@@ -2,8 +2,10 @@ from datetime import datetime
 
 from pydantic import BaseModel
 
-class User_Model(BaseModel):
+class WalletModel(BaseModel):
     created_at: datetime | None = None
     deleted_at: datetime | None = None
-    nombre_usuario: str
-    password: str
+    nombre: str
+    proveedor: str
+    direccion: str
+    id_usuario: int
