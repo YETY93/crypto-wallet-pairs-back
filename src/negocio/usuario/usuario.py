@@ -10,13 +10,12 @@ def crear_usuario(user: UserModel) -> bool:
     usuario.password = hashear_password(user.password)
     return persistir_usuario(usuario)
 
-def obtener_datos_usuario(user: UserModel) -> UserModel:
-    return obtener_usuario(user.nombre_usuario)
-
+def obtener_datos_usuario(nombre_usuario: str) -> UserModel:
+    return obtener_usuario(nombre_usuario)
 
 def autenticar_usuario(user: UserModel) -> Optional[UserModel]:
-    usuario_almacenado: UserModel = obtener_datos_usuario(user)
-    if verificar_password(user.password, usuario_almacenado.password):
-        return usuario_almacenado
+    usuario_almacenado: UserModel = obtener_datos_usuario(user.nombre_usuario)
+    if usuario_almacenado and verificar_password(user.password, usuario_almacenado.password):
+        return user
     return None
 

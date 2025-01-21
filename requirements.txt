@@ -4,3 +4,4 @@ mysql-connector-python~=9.1.0
 passlib~=1.7.4
 python-dotenv~=1.0.1
 python-jose~=3.3.0
+pydantic-settings~=2.7.1
