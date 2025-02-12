@@ -31,14 +31,10 @@ def crear_token_acceso(data: dict, expiracion_delta: Optional[timedelta] = None)
     return encripta_jwt
 
 
-def generar_token(usuario_model: UserModel):
+def generar_token(usuario_model: UserModel) -> Optional[TokenModel]:
     usuario_logueado = usuario.autenticar_usuario(usuario_model)
     if not usuario_logueado:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Incorrect email/username or password",
-            headers={"WWW-Authenticate": "Bearer"},
-        )
+        return None
     expiracion_token = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     token_generado = crear_token_acceso(data=generar_diccionario(usuario_logueado), expiracion_delta=expiracion_token)
     return TokenModel(access_token=token_generado, token_type=TOKEN_TYPE)

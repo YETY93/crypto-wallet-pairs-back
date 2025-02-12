@@ -1,7 +1,7 @@
 from typing import List
 from pydantic import BaseModel, Field
 
-from src.schemas.error_eschema import ErrorModel
+from src.schemas.error_schema import ErrorModel
 
 class Gestor_Error(BaseModel):
     errores: List[ErrorModel] = Field(default_factory=list)

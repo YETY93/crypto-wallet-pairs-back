@@ -8,7 +8,3 @@ class UserModel(BaseModel):
     deleted_at: datetime | None = None
     nombre_usuario: str
     password: str | None
-
-    class Config:
-        orm_mode = True
-        exclude_none = True
